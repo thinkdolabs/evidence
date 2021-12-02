@@ -17,7 +17,7 @@
 	</header>
 	<aside class=sidebar>
 	  <div class="sticky">
-		<h3><a href = '/' >Organization Name</a></h3>
+		<h1>Campus Energy</h1>
 		<nav>
 		  <ul>
 			<li>Nav Item</li>
@@ -96,26 +96,26 @@
 	  </div>
 	</aside>
 	<main>
-	{#if !$navigating}
-	  <article transition:fade>
-		  <slot/>
-	  </article>
-	  <aside class='toc'>
-		<div class="sticky">
-			<h4>On this page</h4>
-			  <ul>
-				<li>Nav Item that is much longer than 14 rem</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-				<li>Nav Item</li>
-			  </ul>
-		</aside>
-	{/if}
+	  <div class=content>
+		<article>
+			<slot/>
+		</article>
+		<aside class='toc'>
+		  <div class="sticky-toc">
+			  <h4>On this page</h4>
+				<ul>
+				  <li>Nav Item that is much longer than 14 rem</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				  <li>Nav Item</li>
+				</ul>
+		  </aside>
+	  </div>
 	</main>
 
   </div>
@@ -127,7 +127,7 @@
   grid-template-areas:
     'sidebar header'
     'sidebar main';
-  grid-template-columns: 14rem 1fr;
+  grid-template-columns: 20rem 5fr;
   grid-template-rows: var(--header-height) 1fr;
   gap: 0 16px;
   margin: 0 auto;
@@ -143,7 +143,7 @@ header {
   place-content: center;
   height: var(--header-height);
   /* border-bottom: 3px solid; */
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 1);
 
 }
 
@@ -155,16 +155,18 @@ aside.sidebar {
   grid-area: sidebar;
   position: relative;
   z-index: 1;
-  padding-top: 0;
-  border: 3px solid;
+  background-color: var(--grey-100);
+  border-right: 1px solid var(--grey-300);
+  
+  /* color: white; */
+  /* border: 3px solid; */
 
 }
 
 .sticky {
 	position: sticky;
-  	top: var(--header-height);
-	margin-top: 0;
-	padding-top: 0;
+  	top: 0;
+	padding: 1em;
 }
 
 nav {
@@ -174,23 +176,46 @@ nav {
 
 main {
   grid-area: main;
-  border: 3px solid;
-  display: grid;
-  gap: 0 16px;
-  justify-items: center;
-  grid-template-columns: 1fr 14rem;
-  grid-template-areas:
-    'article toc'
+  /* border: 3px solid; */
+}
+
+div.content { 
+	margin: auto;
+	max-width:100ch;
+	box-sizing: border-box;
+	display: grid;
+	/* border: 3px solid red; */
+	grid-template-columns: 4fr minmax(0,1fr);
+	gap: 0 5ch;
+  	grid-template-areas:
+    	'article toc'; 
+    justify-items: left;
 }
 
 article {
 	max-width: 70ch;
 	grid-area: article;
+	padding: 0 1.5em 0 1.5em;
+	box-sizing: border-box;
+	/* border: 3px solid yellow; */
 }
 
 aside.toc {
 	grid-area: toc;
-	border: 3px solid;
+	padding: 0px;
+	/* border: 3px solid; */
 }
+
+.sticky-toc > h4 {
+	margin-top: 0px;
+}
+
+.sticky-toc { 
+	position: sticky;
+  	top: var(--header-height);
+	padding-left: 1em; 
+	border-left: 1px solid var(--grey-100);
+}
+
 
 </style>

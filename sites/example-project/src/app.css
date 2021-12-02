@@ -14,7 +14,7 @@ body {
 	margin: 0 0 0 0;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spectral+SC&display=swap');
 
 
@@ -107,13 +107,14 @@ article a:hover {
 	text-underline-offset: 0.05em;
 }
 
-main {
+/* main {
 	position: relative;
 	max-width: 70ch;
 	margin: 0 auto;
 	box-sizing: border-box;
 	padding: 0 1.5em 0 1.5em;
-}
+} */
+
 
 hr {
 	display: block;
@@ -211,4 +212,4 @@ hr {
 	--yellow-900: hsla(22, 82%, 39%, 1);
 	--yellow-999: hsla(15, 86%, 30%, 1);
 	
-} */
+}
