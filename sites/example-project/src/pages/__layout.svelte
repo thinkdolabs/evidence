@@ -11,10 +11,6 @@
 	<title>Evidence</title>
 </svelte:head>
 
-<!-- Two states: mobile open -->
-
-
-	
 <div class="grid">
 	<header>
 	  <BreadCrumbs/>
@@ -104,13 +100,11 @@
 	  <article transition:fade>
 		  <slot/>
 	  </article>
-	{/if}
-	</main>
-	<aside class='toc'>
+	  <aside class='toc'>
 		<div class="sticky">
 			<h4>On this page</h4>
 			  <ul>
-				<li>Nav Item</li>
+				<li>Nav Item that is much longer than 14 rem</li>
 				<li>Nav Item</li>
 				<li>Nav Item</li>
 				<li>Nav Item</li>
@@ -120,7 +114,10 @@
 				<li>Nav Item</li>
 				<li>Nav Item</li>
 			  </ul>
-	</aside>
+		</aside>
+	{/if}
+	</main>
+
   </div>
 
 <style>
@@ -128,11 +125,11 @@
   --header-height: 2em;
   display: grid;
   grid-template-areas:
-    'sidebar header header'
-    'sidebar main toc';
-  grid-template-columns: 14rem 1fr 14rem;
+    'sidebar header'
+    'sidebar main';
+  grid-template-columns: 14rem 1fr;
+  grid-template-rows: var(--header-height) 1fr;
   gap: 0 16px;
-  max-width: 1200px;
   margin: 0 auto;
   isolation: isolate;
 }
@@ -147,6 +144,7 @@ header {
   height: var(--header-height);
   /* border-bottom: 3px solid; */
   background-color: rgba(255, 255, 255, 0.95);
+
 }
 
 /*
@@ -177,6 +175,17 @@ nav {
 main {
   grid-area: main;
   border: 3px solid;
+  display: grid;
+  gap: 0 16px;
+  justify-items: center;
+  grid-template-columns: 1fr 14rem;
+  grid-template-areas:
+    'article toc'
+}
+
+article {
+	max-width: 70ch;
+	grid-area: article;
 }
 
 aside.toc {
