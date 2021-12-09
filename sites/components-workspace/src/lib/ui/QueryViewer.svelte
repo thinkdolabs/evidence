@@ -1,5 +1,4 @@
 <script>
-  import { format } from 'sql-formatter';
   import { slide } from 'svelte/transition';
   import DataTable from './QueryViewerSupport/QueryDataTable.svelte'
   import ChevronToggle from "./ChevronToggle.svelte"
@@ -19,8 +18,8 @@
 
   // Query text & Compiler Toggle 
   let queries = pageQueries.filter(d => d.id === queryID)
-  let inputQuery = format(queries[0].inputQueryString)
-  let compiledQuery = format(queries[0].compiledQueryString)
+  let inputQuery = queries[0].inputQueryString
+  let compiledQuery = queries[0].compiledQueryString
   let showCompilerToggle = (queries[0].compiled && queries[0].compileError === undefined)
   let showCompiled = showCompilerToggle
       // Pre-calculate the container height for smooth slide transition 
@@ -63,9 +62,9 @@
           {#if showSQL}
             <div class=code-container transition:slide|local style={`height: ${codeContainerHeight}em;`}>
               {#if showCompiled}
-                <Prism language="sql" code={format(compiledQuery)}/>
+                <Prism language="sql" code={compiledQuery}/>
               {:else}
-                <Prism language="sql" code={format(inputQuery)}/>
+                <Prism language="sql" code={inputQuery}/>
               {/if}
             </div>  
           {/if}
